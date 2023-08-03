@@ -67,31 +67,16 @@ INSERT INTO ProductsCategories
           (2, 3),
           (3, 2)
 ~~~
-![image](https://github.com/MaximKuraksin/MindboxTest/assets/34394507/38a0b810-86ed-44bd-b7ae-642b8216cdf6)
-![image](https://github.com/MaximKuraksin/MindboxTest/assets/34394507/e4ff20fa-6a07-4674-940b-92952db2f208)
-![image](https://github.com/MaximKuraksin/MindboxTest/assets/34394507/1c6c3226-3056-4f3f-8812-d8f8624b83b5)
-
-
-
-
 ### Запрос на выборку данных 1
 ~~~sql
 SELECT p.Name AS Product, c.Name AS Category FROM Products AS p
 LEFT JOIN ProductsCategories AS pc ON p.Id = pc.ProductId
 LEFT JOIN Categories AS c ON c.Id = pc.CategoryId
 ~~~
-### Результат выполнения запроса
 
-![image](https://github.com/MaximKuraksin/MindboxTest/assets/34394507/258b04f9-777d-40ad-a76b-e1a79aa14de7)
-
-
-### Запрос на выборку данных 2
+### Запрос на выборку данных 2 (вывод всех категорий через запятую для каждого продукта)
 ~~~sql
 SELECT p.Name AS Product, STRING_AGG(c.Name, ', ') AS Categories FROM Products AS p 
 LEFT JOIN ProductsCategories AS pc ON p.Id = pc.ProductId 
 LEFT JOIN Categories AS c ON c.Id = pc.CategoryId GROUP BY p.Name
 ~~~
-
-### Результат выполнения запроса
-
-![image](https://github.com/MaximKuraksin/MindboxTest/assets/34394507/8fdbf7ce-60fe-41d4-8de3-1cc8c5657abc)
